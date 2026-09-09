@@ -2,14 +2,12 @@ package com.user_api.security.security;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name = "users")
 @Entity(name = "users")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -24,5 +22,6 @@ public class Users {
     public Users(UsersRequestDTO data){
         this.name = data.name();
         this.email = data.email();
+        this.senha = data.senha();
     }
 }

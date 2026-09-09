@@ -2,16 +2,16 @@
 
 API REST desenvolvida com **Java e Spring Boot** para fins de estudo.
 
-O projeto realiza o gerenciamento básico de usuários e, atualmente, permite listar e cadastrar usuários.
+O projeto realiza o gerenciamento de usuários por meio de uma API REST e possui operações de criação, consulta, atualização e exclusão de usuários.
 
 ## 🚀 Tecnologias utilizadas
 
-- Java 21
-- Spring Boot
-- Spring Data JPA
-- H2 Database
-- Maven
-- Lombok
+* Java 21
+* Spring Boot
+* Spring Data JPA
+* H2 Database
+* Maven
+* Lombok
 
 ## 📁 Estrutura do projeto
 
@@ -58,6 +58,41 @@ Exemplo de JSON:
 }
 ```
 
+Retorna **201 Created** após o cadastro.
+
+### Atualizar usuário
+
+**PUT**
+
+```http
+/users/{id}
+```
+
+Atualiza os dados de um usuário existente.
+
+Exemplo de JSON:
+
+```json
+{
+  "name": "Ana Lu",
+  "email": "analú@email.com"
+}
+```
+
+Retorna **200 OK** quando o usuário é atualizado e **404 Not Found** caso o usuário não exista.
+
+### Excluir usuário
+
+**DELETE**
+
+```http
+/users/{id}
+```
+
+Exclui um usuário existente.
+
+Retorna **204 No Content** quando a exclusão é realizada e **404 Not Found** caso o usuário não exista.
+
 ## 🗄️ Banco de dados
 
 O projeto utiliza o **H2 Database**, um banco de dados em memória utilizado durante o desenvolvimento da aplicação.
@@ -82,13 +117,15 @@ Execute a aplicação:
 ./mvnw spring-boot:run
 ```
 
-## 📌 Próximos passos
+## 📌 Progresso do projeto
 
-- [x] Criar entidade de usuários
-- [x] Configurar banco de dados H2
-- [x] Implementar GET para listar usuários
-- [x] Implementar POST para cadastrar usuários
-- [x] Utilizar DTOs
-- [ ] Implementar PUT
-- [ ] Implementar DELETE
-- [ ] Implementar autenticação e segurança
+* [x] Criar entidade de usuários
+* [x] Configurar banco de dados H2
+* [x] Implementar GET para listar usuários
+* [x] Implementar POST para cadastrar usuários
+* [x] Utilizar DTOs
+* [x] Implementar PUT
+* [x] Implementar DELETE
+* [ ] Implementar autenticação com JWT
+* [ ] Configurar autorização e segurança
+* [ ] Documentar o processo de autenticação JWT
