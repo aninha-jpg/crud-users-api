@@ -1,12 +1,14 @@
 package com.user_api.security.security.controllers;
 
-import com.user_api.security.security.Users;
-import com.user_api.security.security.UsersRepository;
-import com.user_api.security.security.UsersRequestDTO;
+import com.user_api.security.security.config.SecurityConfig;
+import com.user_api.security.security.entities.Users;
+import com.user_api.security.security.repositories.UsersRepository;
+import com.user_api.security.security.DTO.UsersRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import com.user_api.security.security.UsersResponseDTO;
+import com.user_api.security.security.DTO.UsersResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -20,6 +22,12 @@ public class UsersController {
     @Autowired
     private UsersRepository repository;
 
+    private final PasswordEncoder passwordEncoder;
+
+    public UsersController(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @CrossOrigin(origins ="*", allowedHeaders = "*")
     @GetMapping
     public List<UsersResponseDTO> getAll() {
@@ -32,12 +40,13 @@ public class UsersController {
 
     @CrossOrigin(origins ="*", allowedHeaders = "*")
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("/users")
     public void saveUsers(@RequestBody UsersRequestDTO data){
+        String hashPassword = passwordEncoder.encode(data.senha());
         Users usersData = new Users(data);
+        usersData.setSenha(hashPassword);
         repository.save(usersData);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> attUser(@PathVariable Long id, @RequestBody UsersRequestDTO data){
@@ -46,7 +55,6 @@ public class UsersController {
             Users user = optionalUser.get();
             user.setName(data.name());
             user.setEmail(data.email());
-            user.setSenha(data.senha());
             repository.save(user);
             return ResponseEntity.ok().build();
         } else {
@@ -64,4 +72,5 @@ public class UsersController {
         }
 
     }
+
 }
