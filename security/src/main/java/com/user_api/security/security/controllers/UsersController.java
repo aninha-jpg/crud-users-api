@@ -1,6 +1,5 @@
 package com.user_api.security.security.controllers;
 
-import com.user_api.security.security.config.SecurityConfig;
 import com.user_api.security.security.entities.Users;
 import com.user_api.security.security.repositories.UsersRepository;
 import com.user_api.security.security.DTO.UsersRequestDTO;
@@ -40,7 +39,7 @@ public class UsersController {
 
     @CrossOrigin(origins ="*", allowedHeaders = "*")
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/users")
+    @PostMapping
     public void saveUsers(@RequestBody UsersRequestDTO data){
         String hashPassword = passwordEncoder.encode(data.senha());
         Users usersData = new Users(data);

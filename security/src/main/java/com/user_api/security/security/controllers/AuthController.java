@@ -1,44 +1,55 @@
 package com.user_api.security.security.controllers;
 
-import com.user_api.security.security.DTO.LoginRequestDTO;
+import com.user_api.security.security.DTO.UsersRequestDTO;
 import com.user_api.security.security.entities.Users;
 import com.user_api.security.security.repositories.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import com.user_api.security.security.services.JwtService;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-
-    @Autowired
     private UsersRepository repository;
+    private AuthenticationManager authenticationManager;
+    private PasswordEncoder passwordEncoder;
+    private JwtService jwtService;
 
-    private final PasswordEncoder passwordEncoder;
-
-    public AuthController(PasswordEncoder passwordEncoder) {
+    public AuthController(AuthenticationManager authenticationManager, UsersRepository repository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+        this.authenticationManager = authenticationManager;
+        this.repository = repository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody LoginRequestDTO data){
-        Optional<Users> optionalUser = repository.findByEmail(data.email());
-        if(optionalUser.isPresent()){
-            Users user = optionalUser.get();
-            boolean truePassword = passwordEncoder.matches(data.senha(), user.getSenha());
-            if(truePassword){
-                return ResponseEntity.ok().build();
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+    public String login(@RequestBody UsersRequestDTO data){
+        Authentication authentication = authenticationManager.authenticate(
+            new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+                    data.email(),
+                    data.senha()
+            )
+        );
+
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return jwtService.generateToken(userDetails.getUsername());
+    }
+
+    @PostMapping("/signup")
+    public String registerUser(@RequestBody UsersRequestDTO data){
+        if(repository.existsByEmail(data.email())){
+            return "Users already exists!";
         } else {
-            return ResponseEntity.notFound().build();
+            final Users newUsers = new Users(null, data.name(), data.email(), passwordEncoder.encode(data.senha())
+            );
+            repository.save(newUsers);
+            return "User registered successfully!";
         }
     }
 }
