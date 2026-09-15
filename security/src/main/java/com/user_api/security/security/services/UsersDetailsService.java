@@ -19,7 +19,7 @@ public class UsersDetailsService implements UserDetailsService {
 
     @Autowired
     public UsersDetailsService(UsersRepository repository){
-        return null;
+        this.repository = repository;
     }
 
     @Override
