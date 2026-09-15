@@ -4,12 +4,16 @@ import com.user_api.security.security.entities.Users;
 import com.user_api.security.security.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+
 
 @Service
-public class UsersDetailsService implements UsersDetailsService {
+public class UsersDetailsService implements UserDetailsService {
 
     private UsersRepository repository;
 
@@ -19,12 +23,15 @@ public class UsersDetailsService implements UsersDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
-        Users users = repository.findByEmail(email);
-        if(users == null){
-            throw new UsernameNotFoundException("User Not Found with email: " + email);
-
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users users = repository.findByUsername(username);
+        if (users == null) {
+            throw new UsernameNotFoundException("User Not Found with username: " + username);
         }
+        return new org.springframework.security.core.userdetails.User(
+                users.getName(),
+                users.getSenha(),
+                Collections.emptyList()
+        );
     }
-
 }
