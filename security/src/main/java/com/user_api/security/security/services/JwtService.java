@@ -25,14 +25,14 @@ public class JwtService {
 
     private SecretKey key;
 
-    public String generateToken(String username){
+    public String generateToken(String email){
 
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
                 .claims()
                 .add(claims)
-                .subject(username)
+                .subject(email)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMS))//token gerado por 30 minutos
                 .and()

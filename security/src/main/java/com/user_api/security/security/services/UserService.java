@@ -22,9 +22,9 @@ public class UserService {
 
     //verificando e criando toker jwt
     public String verify(Users users){
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(users.getName(), users.getSenha()));
+        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(users.getEmail(), users.getSenha()));
         if(authentication.isAuthenticated()){
-            return jwtService.generateToken(users.getName());
+            return jwtService.generateToken(users.getEmail());
         }
         return "fail";
     }
