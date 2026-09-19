@@ -28,16 +28,6 @@ public class UsersController {
     }
 
     @CrossOrigin(origins ="*", allowedHeaders = "*")
-    @GetMapping
-    public List<UsersResponseDTO> getAll() {
-        List<UsersResponseDTO> usersList = repository.findAll()
-                .stream()
-                .map(UsersResponseDTO::new)
-                .toList();
-        return usersList;
-    }
-
-    @CrossOrigin(origins ="*", allowedHeaders = "*")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void saveUsers(@RequestBody UsersRequestDTO data){
@@ -45,31 +35,6 @@ public class UsersController {
         Users usersData = new Users(data);
         usersData.setSenha(hashPassword);
         repository.save(usersData);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> attUser(@PathVariable Long id, @RequestBody UsersRequestDTO data){
-        Optional<Users> optionalUser = repository.findById(id);
-        if(optionalUser.isPresent()){
-            Users user = optionalUser.get();
-            user.setName(data.name());
-            user.setEmail(data.email());
-            repository.save(user);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
-        if(repository.existsById(id)){
-            repository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-
     }
 
 }
