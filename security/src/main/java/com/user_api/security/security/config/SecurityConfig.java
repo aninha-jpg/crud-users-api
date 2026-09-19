@@ -19,6 +19,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
+
+    // define as rotas públicas e rotas que necessitam de autorização
     @Autowired
     UserDetailsService userDetailsService;
     @Autowired
@@ -42,6 +44,8 @@ public class SecurityConfig {
         // configurando o hash
     }
 
+
+    // Usuários cadastrados recebem CLIENT por padrão
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http){
         http
@@ -53,11 +57,15 @@ public class SecurityConfig {
                         s.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
                         ))
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/auth/login", "/auth/signup", "/users").permitAll().anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/auth/login", "/auth/signup", "/users").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/operator/**").hasAnyAuthority("OPERATOR", "ADMINs")
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/users/**").hasAnyAuthority("CLIENT", "ADMIN", "OPERATOR")
+                        .anyRequest().authenticated()
                 );
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
-        // cadastro sem autenticação
     }
 
 }

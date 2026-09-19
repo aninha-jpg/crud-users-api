@@ -5,6 +5,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -13,6 +15,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
+// Gera o JWT contendo o email do usuário e suas roles
 
 @Component
 @Slf4j
@@ -25,17 +29,22 @@ public class JwtService {
 
     private SecretKey key;
 
-    public String generateToken(String email){
+    public String generateToken(UserDetails userDetails){
 
         Map<String, Object> claims = new HashMap<>();
 
+        claims.put(
+                "roles",
+                userDetails.getAuthorities()
+                        .stream()
+                        .map(GrantedAuthority::getAuthority).toList()
+        );
+
         return Jwts.builder()
-                .claims()
-                .add(claims)
-                .subject(email)
+                .claims(claims)
+                .subject(userDetails.getUsername())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMS))//token gerado por 30 minutos
-                .and()
                 .signWith(key)
                 .compact();
     }

@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Set;
+
 
 @RestController
 @RequestMapping("/auth")
@@ -39,16 +42,27 @@ public class AuthController {
         );
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return jwtService.generateToken(userDetails.getUsername());
+        return jwtService.generateToken(userDetails);
     }
 
+
+    // rota de cadastro -- configuração da role CLIENT
     @PostMapping("/signup")
-    public String registerUser(@RequestBody UsersRequestDTO data){
-        if(repository.existsByEmail(data.email())){
+    public String registerUser(@RequestBody UsersRequestDTO data) {
+        if (repository.existsByEmail(data.email())) {
             return "Users already exists!";
         } else {
-            final Users newUsers = new Users(null, data.name(), data.email(), passwordEncoder.encode(data.senha()), UsersProfile.CLIENT
-            );
+            final Users newUsers = new Users();
+            newUsers.setId(null);
+            newUsers.setName(data.name());
+            newUsers.setEmail(data.email());
+            newUsers.setSenha(passwordEncoder.encode(data.senha()));
+
+            if (data.usersProfile() != null) {
+                newUsers.setUserProfile(Set.of(data.usersProfile()));
+            } else {
+                newUsers.setUserProfile(Collections.singleton(UsersProfile.CLIENT));
+            }
             repository.save(newUsers);
             return "User registered successfully!";
         }

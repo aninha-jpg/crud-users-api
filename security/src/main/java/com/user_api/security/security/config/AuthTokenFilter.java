@@ -20,6 +20,9 @@ import java.io.IOException;
 @Slf4j
 public class AuthTokenFilter extends OncePerRequestFilter {
 
+
+    // pega as requisições e valida o JWT enviado no header
+
     public static final String BEARER_ = "Bearer ";
     @Autowired
     private JwtService jwtService;
