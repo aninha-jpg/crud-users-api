@@ -35,3 +35,5 @@ build/
 
 security/src/main/resources/application.properties
 security/src/test/resources/application-test.properties
+src/main/resources/application.properties
+src/test/resources/application-test.properties
