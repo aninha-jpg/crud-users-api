@@ -1,0 +1,7 @@
+.idea/
+
+security/target/
+security/.mvn/
+
+security/src/main/resources/application.properties
+security/src/test/resources/application-test.properties
