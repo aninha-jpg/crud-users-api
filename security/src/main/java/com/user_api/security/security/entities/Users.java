@@ -20,6 +20,8 @@ public class Users {
     @Column(unique = true)
     private String email;
     private String senha;
+    @Enumerated(EnumType.STRING)
+    private UsersProfile userProfile;
 
     public Users(UsersRequestDTO data) {
         this.name = data.name();
