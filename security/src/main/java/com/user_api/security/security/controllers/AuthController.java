@@ -2,6 +2,7 @@ package com.user_api.security.security.controllers;
 
 import com.user_api.security.security.DTO.UsersRequestDTO;
 import com.user_api.security.security.entities.Users;
+import com.user_api.security.security.entities.UsersProfile;
 import com.user_api.security.security.repositories.UsersRepository;
 import com.user_api.security.security.services.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,7 +47,7 @@ public class AuthController {
         if(repository.existsByEmail(data.email())){
             return "Users already exists!";
         } else {
-            final Users newUsers = new Users(null, data.name(), data.email(), passwordEncoder.encode(data.senha())
+            final Users newUsers = new Users(null, data.name(), data.email(), passwordEncoder.encode(data.senha()), UsersProfile.CLIENT
             );
             repository.save(newUsers);
             return "User registered successfully!";

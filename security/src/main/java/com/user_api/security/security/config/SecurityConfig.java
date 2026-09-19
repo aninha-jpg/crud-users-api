@@ -53,7 +53,7 @@ public class SecurityConfig {
                         s.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
                         ))
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/auth/login", "/auth/signup").permitAll().anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/auth/login", "/auth/signup", "/users").permitAll().anyRequest().authenticated()
                 );
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
