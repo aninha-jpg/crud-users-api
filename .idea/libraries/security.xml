@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="security">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/security.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
