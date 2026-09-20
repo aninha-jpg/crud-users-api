@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Crio um container para fazer o formulário -->
+<main class="container">
+    <form>
+        <h1>Entrar</h1>
+        <!-- Crio o input de usuário -->
+        <div class="login-user">
+            <input placeholder="Usuário" type="text" name="Usuario" id="usuario" required>
+            <i class="bx bxs-user"></i>
+        </div>
+        <!-- Crio o input de senha -->
+        <div class="login-user">
+            <input placeholder="Senha" type="password" name="Senha" id="senha" required>
+            <i class="bx bxs-lock-alt"></i>
+        </div>
+        <div class="lembrar-esquecer">
+            <!-- Crio o label e checkbox para se caso quiser lembrar/esquecer a senha -->
+            <label>
+                <input type="checkbox">Lembrar senha</label>
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+        <!-- Crio o botão de login -->
+        <button type="submit" class="login">Login</button>
+        <!-- Crio outra div para cadastrar-se -->
+        <div class="registrar">
+            <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</main>
+</body>
+</html>
