@@ -3,13 +3,16 @@ package com.user_api.security.security.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
 
-
+@DataJpaTest
+@ActiveProfiles("test")
 class JwtServiceTest {
 
     private JwtService jwtService;

@@ -5,13 +5,11 @@ import com.user_api.security.security.repositories.UsersRepository;
 import com.user_api.security.security.DTO.UsersRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.user_api.security.security.DTO.UsersResponseDTO;
 import org.springframework.http.ResponseEntity;
-
-import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -35,6 +33,18 @@ public class UsersController {
         Users usersData = new Users(data);
         usersData.setSenha(hashPassword);
         repository.save(usersData);
+    }
+
+    @CrossOrigin(origins ="*", allowedHeaders = "*")
+    @GetMapping("/me")
+    public ResponseEntity<UsersResponseDTO> getMe(Authentication authentication) {
+        Users user = repository.findByEmail(authentication.getName());
+
+        if (user != null) {
+            return ResponseEntity.ok(new UsersResponseDTO(user));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
