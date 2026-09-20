@@ -3,6 +3,7 @@ package com.user_api.security.security.repositories;
 
 import com.user_api.security.security.DTO.UsersRequestDTO;
 import com.user_api.security.security.entities.Users;
+import com.user_api.security.security.entities.UsersProfile;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class UsersRepositoryTest {
     @Test
     @DisplayName("Should get user successfully from db")
     void findByEmailSuccess() {
-        UsersRequestDTO data = new UsersRequestDTO("Ana", "ana@email.com", "2983334");
+        UsersRequestDTO data = new UsersRequestDTO("Ana", "ana@email.com", "2983334", UsersProfile.CLIENT);
         this.createUser(data);
 
         Users foundUser = this.usersRepository.findByEmail("ana@email.com");
