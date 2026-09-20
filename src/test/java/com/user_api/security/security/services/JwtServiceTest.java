@@ -62,7 +62,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("shoul validation token jwt successfully")
+    @DisplayName("shouldd validation token jwt successfully")
     void validateJwtToken() {
         UserDetails userDetails = User
                 .withUsername("ana@email.com")
