@@ -1,0 +1,18 @@
+spring.application.name=security
+
+spring.jpa.open-in-view=true
+
+#postgres connection configuration
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/SEU_BANCO
+spring.datasource.username=SEU_USUARIO
+spring.datasource.password=SUA_SENHA
+
+
+#SQL show configuration
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+#jwt configuration
+jwt.secret=SUA_CHAVE_AQUI
+jwt.expiration=360000
