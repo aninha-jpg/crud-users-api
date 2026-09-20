@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
 
-@DataJpaTest
-@ActiveProfiles("test")
 class JwtServiceTest {
 
     private JwtService jwtService;

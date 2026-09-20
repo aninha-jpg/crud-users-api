@@ -22,8 +22,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-@DataJpaTest
-@ActiveProfiles("test")
+
 class AuthControllerTest {
 
     @Mock
@@ -35,7 +34,6 @@ class AuthControllerTest {
     @Mock
     private JwtService jwtService;
 
-    @Autowired
     @InjectMocks
     private AuthController authController;
 
