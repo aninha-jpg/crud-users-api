@@ -2,15 +2,9 @@
 
 ## 📌 Sobre o projeto
 
-Este projeto consiste no desenvolvimento de uma aplicação web para gerenciamento
+Este projeto consiste no desenvolvimento de uma aplicação web para gerenciamento de usuários, composta por uma API REST desenvolvida em Java com Spring Boot e uma interface web desenvolvida com HTML, CSS e JavaScript.
 
-de usuários, composta por uma API REST desenvolvida em Java com Spring Boot e
-
-uma interface web desenvolvida com HTML, CSS e JavaScript.
-
-A aplicação utiliza autenticação baseada em JWT e controle de acesso por
-
-diferentes perfis de usuário.
+A aplicação utiliza autenticação baseada em JWT e controle de acesso por diferentes perfis de usuário. 
 
 O projeto foi desenvolvido como atividade acadêmica da disciplina de Sistemas Web Seguros.
 
