@@ -601,6 +601,16 @@ A aplicação pode ser executada através de um servidor local ou conforme a con
 
 ---
 
+### Swagger UI
+
+![Swagger UI](./images/swagger-ui.png)
+
+Com a aplicação em execução, a documentação interativa da API pode ser acessada em:
+
+`http://localhost:8080/swagger-ui/index.html`
+
+---
+
 ## 📁 Estrutura do projeto
 
 ### 📁 Estrutura do Back-end
