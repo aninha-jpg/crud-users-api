@@ -10,18 +10,21 @@
 <body>
 <!-- Crio um container para fazer o formulário -->
 <main class="container">
-    <form>
+    <form id="loginForm">
         <h1>Entrar</h1>
+
         <!-- Crio o input de usuário -->
         <div class="login-user">
-            <input placeholder="Usuário" type="text" name="Usuario" id="usuario" required>
+            <input placeholder="E-mail" type="email" name="email" id="email" required>
             <i class="bx bxs-user"></i>
         </div>
+
         <!-- Crio o input de senha -->
         <div class="login-user">
             <input placeholder="Senha" type="password" name="Senha" id="senha" required>
             <i class="bx bxs-lock-alt"></i>
         </div>
+        
         <div class="lembrar-esquecer">
             <!-- Crio o label e checkbox para se caso quiser lembrar/esquecer a senha -->
             <label>

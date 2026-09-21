@@ -48,6 +48,13 @@ public class Users {
         this.senha = data.senha();
     }
 
+    public Users(UsersRequestDTO data, UsersProfile profile) {
+        this.name = data.name();
+        this.email = data.email();
+        this.senha = data.senha();
+        this.userProfile.add(profile);
+    }
+
     public String getEmail() {
         return email;
     }
