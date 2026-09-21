@@ -123,15 +123,15 @@ Essa duração limita o período de utilização de um token caso ele seja compr
 
 ## 📡 Endpoints
 
-Os principais endpoints utilizados pela aplicação são:
-
 | Método | Endpoint | Finalidade |
 |---|---|---|
 | `POST` | `/users` | Cadastrar um novo usuário |
-| `POST` | `/auth` | Realizar login e obter o token JWT |
+| `POST` | `/auth/login` | Realizar login e obter o token JWT |
+| `POST` | `/auth/signup` | Cadastrar um novo usuário |
 | `GET` | `/users/me` | Consultar os dados do usuário autenticado |
 | `GET` | `/admin` | Listar usuários |
 | `POST` | `/admin` | Cadastrar usuário através da área administrativa |
+| `GET` | `/operator/email/{email}` | Consultar um usuário pelo e-mail |
 | `PUT` | `/operator/{id}` | Atualizar informações de um usuário |
 | `DELETE` | `/admin/{id}` | Excluir um usuário |
 
