@@ -50,6 +50,8 @@ conceitos relacionados a:
 
 - PostgreSQL
 
+- H2 Database
+
 ### Front-end
 
 - HTML
@@ -497,6 +499,8 @@ O funcionamento geral da aplicação pode ser representado da seguinte forma:
 ## 🧪 Testes
 
 Foram realizados testes manuais e automatizados para verificar o funcionamento da aplicação.
+
+Os testes automatizados utilizam o **H2 Database**, um banco de dados em memória, permitindo executar os testes sem depender do banco PostgreSQL da aplicação.
 
 ### Testes da API
 
