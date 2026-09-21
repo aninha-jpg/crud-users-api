@@ -11,6 +11,12 @@
 
 <body>
 
+     <header>
+            <a href="../home/home.html">Home</a>
+            <a href="../operator/operator.html">Área do Operador</a>
+            <a href="../admin/admin.html">Área do Admin</a>
+        </header>
+
     <div class="container">
 
         <h1>Área do Admin</h1>
@@ -26,11 +32,9 @@
             Adicionar usuário
             </button>
 
-            <button id="excluir">Excluir</button>
+            <a href="../home/home.html">Voltar</a>
 
-            <button id="logout">
-                Sair
-            </button>
+            <a href="../login/index.html" onclick="localStorage.removeItem('token')">Sair</a>
 
 
         </div>

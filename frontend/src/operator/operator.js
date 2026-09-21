@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "../login/login.html";
+    window.location.href = "../login/index.html";
 }
 
 let id;
@@ -42,14 +42,6 @@ document.getElementById("buscarDados").addEventListener("click", async () => {
         alert(error.message);
     }
 
-});
-
-// Sair
-document.getElementById("logout").addEventListener("click", () => {
-
-    localStorage.removeItem("token");
-
-    window.location.href = "../login/login.html";
 });
 
 //atualizar o usuario

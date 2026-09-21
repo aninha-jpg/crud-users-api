@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+
+<main class="container">
+
+    <form id="signupForm">
+
+        <h1>Criar conta</h1>
+
+        <div class="signup-user">
+            <input
+                type="text"
+                id="nome"
+                placeholder="Nome"
+                required
+            >
+            <i class="bx bxs-user"></i>
+        </div>
+
+        <div class="signup-user">
+            <input
+                type="email"
+                id="email"
+                placeholder="E-mail"
+                required
+            >
+            <i class="bx bxs-envelope"></i>
+        </div>
+
+        <div class="signup-user">
+            <input
+                type="password"
+                id="senha"
+                placeholder="Senha"
+                required
+            >
+            <i class="bx bxs-lock-alt"></i>
+        </div>
+
+        <button type="submit" class="signup">
+            Cadastrar
+        </button>
+
+        <div class="voltar-login">
+            <p>
+                Já tem uma conta?
+                <a href="../login/index.html">Entrar</a>
+            </p>
+        </div>
+
+    </form>
+
+</main>
+
+<script src="signup.js"></script>
+
+</body>
+</html>

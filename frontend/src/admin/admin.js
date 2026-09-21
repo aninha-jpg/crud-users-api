@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "../login/login.html";
+    window.location.href = "../login/index.html";
 }
 
 const conteudo = document.getElementById("conteudo");
@@ -124,15 +124,6 @@ async function excluirUsuario(id) {
     }
 }
 
-
-// Sair
-document.getElementById("logout").addEventListener("click", () => {
-
-    localStorage.removeItem("token");
-
-    window.location.href = "../login/login.html";
-});
-
 //adc usuario
 
 document.getElementById("adicionarUsuario").addEventListener("click", () => {
@@ -153,7 +144,6 @@ document.getElementById("adicionarUsuario").addEventListener("click", () => {
         </select>
 
         <button id="cadastrar">Cadastrar</button>
-        <button id="voltar">Voltar</button>
     `;
 
     document.getElementById("cadastrar").addEventListener("click", async () => {
@@ -198,9 +188,4 @@ document.getElementById("adicionarUsuario").addEventListener("click", () => {
         }
 
     });
-
-    document.getElementById("voltar").addEventListener("click", () => {
-        document.getElementById("buscarUsuarios").click();
-    });
-
 });

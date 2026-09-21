@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,12 @@
 </head>
 <body>
     
+    <header>
+        <a href="../home/home.html">Home</a>
+        <a href="../operator/operator.html">Área do Operador</a>
+        <a href="../admin/admin.html">Área do Admin</a>
+    </header>
+
     <h1>Área do Operador</h1>
     
     <input type="email" id="emailBusca" placeholder="E-mail do usuário">
@@ -22,7 +28,10 @@
 
     <button id="atualizar">Atualizar</button>
 
-    <button id="logout" >Sair</button>
+
+    <a href="../home/home.html">Voltar</a>
+    <a href="../login/index.html" onclick="localStorage.removeItem('token')">Sair</a>
+
 
     <script src="operator.js"></script>
 
