@@ -599,67 +599,13 @@ A aplicação pode ser executada através de um servidor local ou conforme a con
 
 ## 📁 Estrutura do projeto
 
-```TEXT
+### 📁 Estrutura do Back-end
 
-├── backend/
+![Estrutura do Back-end](./images/back-end.png)
 
-│   └── ...
+### 📁 Estrutura do Front-end
 
-│
-
-└── frontend/
-
-    └── src/
-
-        ├── admin/
-
-        │   ├── admin.html
-
-        │   ├── admin.js
-
-        │   └── admin.css
-
-        │
-
-        ├── home/
-
-        │   ├── home.html
-
-        │   ├── home.js
-
-        │   └── home.css
-
-        │
-
-        ├── login/
-
-        │   ├── index.html
-
-        │   ├── script.js
-
-        │   └── styles.css
-
-        │
-
-        ├── operator/
-
-        │   ├── operator.html
-
-        │   ├── operator.js
-
-        │   └── operator.css
-
-        │
-
-        └── signup/
-
-            ├── signup.html
-
-            ├── signup.js
-
-            └── signup.css
-
-```
+![Estrutura do Front-end](./images/front-end.png)
 
 --- 
 
