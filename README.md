@@ -522,7 +522,7 @@ A API foi testada utilizando o **Postman**, verificando diferentes funcionalidad
 
 Também foram desenvolvidos **8 testes automatizados** para validar diferentes componentes da aplicação.
 
-##### AuthControllerTest**
+##### AuthControllerTest
 
 Testes relacionados à autenticação e cadastro:
 
@@ -575,21 +575,21 @@ Para executar o projeto localmente, é necessário possuir:
 
 Acesse o diretório do back-end e execute:
 
-```Bash
-    mvn spring-boot\:run
+```bash
+    mvn spring-boot:run
 ```
 
 A API será disponibilizada localmente em:
 
-```Bash
-    http\://localhost:8080
+```bash
+    http://localhost:8080
 ```
 
 3. Executar o front-end
 
 O front-end está localizado no diretório:
 
-```Bash
+```bash
     frontend/src/
 ```
 
